@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\VistaBasket.Auth.Data\VistaBasket.Auth.Data.csproj" />
+    <ProjectReference Include="..\VistaBasket.Auth.Entities\VistaBasket.Auth.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
