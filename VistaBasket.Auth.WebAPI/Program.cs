@@ -3,8 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using VistaBasket.Auth.Data;
 using VistaBasket.Auth.Entities.Entities.Identity;
+using VistaBasket.Auth.Service.Model;
 using VistaBasket.Auth.WebAPI.Extensions;
-using VistaBasket.Auth.WebAPI.Models;
+using VistaBasket.Auth.WebAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,7 @@ builder.Services.AddDbContext<AuthDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("VistaBasket.Auth"));
 });
-builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("ApiSettings:JwtOptions"));
+builder.Services.AppConfigSettingsServices(builder.Configuration);
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AuthDbContext>()
     .AddDefaultTokenProviders();
 builder.Services.AddApplicationServices();
@@ -42,8 +43,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    //app.UseSwaggerDocumentation();
 }
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

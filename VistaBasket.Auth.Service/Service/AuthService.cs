@@ -15,10 +15,12 @@ namespace VistaBasket.Auth.Service.Service
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly AuthDbContext _context;
-        public AuthService(UserManager<ApplicationUser> userManager, AuthDbContext context)
+        private readonly IJwtAuthManager _jwtAuthManager;
+        public AuthService(UserManager<ApplicationUser> userManager, AuthDbContext context, IJwtAuthManager jwtAuthManager)
         {
-            _userManager = userManager;            
+            _userManager = userManager;
             _context = context;
+            _jwtAuthManager = jwtAuthManager;
         }
 
         public Task<bool> AssignRole(string email, string roleName)
@@ -29,9 +31,32 @@ namespace VistaBasket.Auth.Service.Service
         public async Task<LoginResponseDto> Login(LoginRequestDto loginRequest)
         {
             var user = _context.ApplicationUsers.FirstOrDefault(u => u.UserName.ToLower() == loginRequest.Email.ToLower());
-
+            if (user == null)
+            {
+                return new LoginResponseDto();
+            }
             bool isValid = await _userManager.CheckPasswordAsync(user, loginRequest.Password);
-            throw new NotImplementedException();
+            if (!isValid)
+            {
+                return new LoginResponseDto();
+            }
+            var token = _jwtAuthManager.GenerateToken(user);
+            UserDto userDTO = new()
+            {
+                Email = user.Email,
+                ID = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber
+            };
+
+            LoginResponseDto loginResponseDto = new LoginResponseDto()
+            {
+                User = userDTO,
+                Token = token
+            };
+
+            return loginResponseDto;
         }
 
         public async Task<string> Register(RegistrationRequestDto registrationRequestDto)

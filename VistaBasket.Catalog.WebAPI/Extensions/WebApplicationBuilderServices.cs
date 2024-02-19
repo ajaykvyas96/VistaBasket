@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using VistaBasket.Auth.Service.Model;
 
-namespace VistaBasket.Auth.WebAPI.Extensions
+namespace VistaBasket.Catalog.WebAPI.Extensions
 {
-    public static class WebApplicationBuilderServices
+    public static class WebApplicationBuilderExtensions
     {
         public static WebApplicationBuilder AddAppAuthetication(this WebApplicationBuilder builder)
         {

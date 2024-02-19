@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VistaBasket.Catalog.Service.Interface;
 using VistaBasket.Catalog.Service.Model;
@@ -18,6 +19,7 @@ namespace VistaBasket.Catalog.WebAPI.Controllers
             _response = new ResponseDto();
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
