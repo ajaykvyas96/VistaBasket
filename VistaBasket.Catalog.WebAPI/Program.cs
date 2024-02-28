@@ -24,7 +24,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerDocumentation();
 builder.Services.AddSwaggerGen();
 builder.AddAppAuthetication();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("https://localhost:7205")
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
+app.UseCors();
+
 //using (var scope = app.Services.CreateScope())
 //{
 //    var services = scope.ServiceProvider;
@@ -37,6 +49,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerDocumentation();
 }
 app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseMiddleware<CurrentUserMiddleware>();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

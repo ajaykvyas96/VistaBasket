@@ -7,39 +7,43 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{AF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthAPI", "AuthAPI", "{EAA7A054-7430-4150-8EF9-8CD0AC9B12B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Auth.WebAPI", "VistaBasket.Auth.WebAPI\VistaBasket.Auth.WebAPI.csproj", "{B28073B8-55B3-4697-B0B0-C0F4ADDD805F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Auth.WebAPI", "VistaBasket.Auth.WebAPI\VistaBasket.Auth.WebAPI.csproj", "{B28073B8-55B3-4697-B0B0-C0F4ADDD805F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Auth.Data", "VistaBasket.Auth.Data\VistaBasket.Auth.Data.csproj", "{3E6FBE6E-467E-4506-BA60-1851DEEA482F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Auth.Data", "VistaBasket.Auth.Data\VistaBasket.Auth.Data.csproj", "{3E6FBE6E-467E-4506-BA60-1851DEEA482F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Auth.Repository", "VistaBasket.Auth.Repository\VistaBasket.Auth.Repository.csproj", "{A602AD7E-E5B6-45C8-BC5F-36F9DE3C9D35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Auth.Repository", "VistaBasket.Auth.Repository\VistaBasket.Auth.Repository.csproj", "{A602AD7E-E5B6-45C8-BC5F-36F9DE3C9D35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Auth.Entities", "VistaBasket.Auth.Entities\VistaBasket.Auth.Entities.csproj", "{46E29843-9BC6-4AD8-9E89-9630FDF676F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Auth.Entities", "VistaBasket.Auth.Entities\VistaBasket.Auth.Entities.csproj", "{46E29843-9BC6-4AD8-9E89-9630FDF676F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Auth.Service", "VistaBasket.Auth.Service\VistaBasket.Auth.Service.csproj", "{E7AF5B83-23E9-48E0-AE14-2E835903A261}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Auth.Service", "VistaBasket.Auth.Service\VistaBasket.Auth.Service.csproj", "{E7AF5B83-23E9-48E0-AE14-2E835903A261}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CatalogAPI", "CatalogAPI", "{204EA14E-7061-4B11-83A5-35C31A5397A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Catalog.WebAPI", "VistaBasket.Catalog.WebAPI\VistaBasket.Catalog.WebAPI.csproj", "{C12B7CC9-D363-4F9E-88DE-1C7FD270C873}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Catalog.WebAPI", "VistaBasket.Catalog.WebAPI\VistaBasket.Catalog.WebAPI.csproj", "{C12B7CC9-D363-4F9E-88DE-1C7FD270C873}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Catalog.Data", "VistaBasket.Catalog.Data\VistaBasket.Catalog.Data.csproj", "{73AFFEA8-732E-47C5-9269-3A11F7717981}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Catalog.Data", "VistaBasket.Catalog.Data\VistaBasket.Catalog.Data.csproj", "{73AFFEA8-732E-47C5-9269-3A11F7717981}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Catalog.Entities", "VistaBasket.Catalog.Entities\VistaBasket.Catalog.Entities.csproj", "{D12053FF-41E3-4AA2-ADE4-105969ADD875}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Catalog.Entities", "VistaBasket.Catalog.Entities\VistaBasket.Catalog.Entities.csproj", "{D12053FF-41E3-4AA2-ADE4-105969ADD875}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Catalog.Repository", "VistaBasket.Catalog.Repository\VistaBasket.Catalog.Repository.csproj", "{B1BE7DF5-AF5C-4C1A-A75A-DBE54C16C776}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Catalog.Repository", "VistaBasket.Catalog.Repository\VistaBasket.Catalog.Repository.csproj", "{B1BE7DF5-AF5C-4C1A-A75A-DBE54C16C776}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Catalog.Service", "VistaBasket.Catalog.Service\VistaBasket.Catalog.Service.csproj", "{54858CD1-77B1-42D7-80FE-D22107B1A048}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Catalog.Service", "VistaBasket.Catalog.Service\VistaBasket.Catalog.Service.csproj", "{54858CD1-77B1-42D7-80FE-D22107B1A048}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderAPI", "OrderAPI", "{F8B057E6-0AEA-459A-A8FB-D37E8897A7FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Order.WebAPI", "VistaBasket.Order.WebAPI\VistaBasket.Order.WebAPI.csproj", "{4E086A85-3C16-425B-87F7-2EB49501190B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Order.WebAPI", "VistaBasket.Order.WebAPI\VistaBasket.Order.WebAPI.csproj", "{4E086A85-3C16-425B-87F7-2EB49501190B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Order.Data", "VistaBasket.Order.Data\VistaBasket.Order.Data.csproj", "{56EA9CCE-0C7E-4A6B-8703-2341D6C8F22D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Order.Data", "VistaBasket.Order.Data\VistaBasket.Order.Data.csproj", "{56EA9CCE-0C7E-4A6B-8703-2341D6C8F22D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Order.Entities", "VistaBasket.Order.Entities\VistaBasket.Order.Entities.csproj", "{9F098841-3AD4-475A-9F7F-912752F2799A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Order.Entities", "VistaBasket.Order.Entities\VistaBasket.Order.Entities.csproj", "{9F098841-3AD4-475A-9F7F-912752F2799A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Order.Repository", "VistaBasket.Order.Repository\VistaBasket.Order.Repository.csproj", "{6DF8BB03-6172-40CA-AC66-8A88F03B85F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Order.Repository", "VistaBasket.Order.Repository\VistaBasket.Order.Repository.csproj", "{6DF8BB03-6172-40CA-AC66-8A88F03B85F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaBasket.Order.Service", "VistaBasket.Order.Service\VistaBasket.Order.Service.csproj", "{85B9A0BD-507A-40E2-BD15-0F71EBB72559}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Order.Service", "VistaBasket.Order.Service\VistaBasket.Order.Service.csproj", "{85B9A0BD-507A-40E2-BD15-0F71EBB72559}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{DC561032-365B-4FBA-A4B6-97AECF541D9E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaBasket.Web", "VistaBasket.Web\VistaBasket.Web.csproj", "{6B52302A-8204-47CD-84C9-637D9DE26BFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +111,10 @@ Global
 		{85B9A0BD-507A-40E2-BD15-0F71EBB72559}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85B9A0BD-507A-40E2-BD15-0F71EBB72559}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85B9A0BD-507A-40E2-BD15-0F71EBB72559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B52302A-8204-47CD-84C9-637D9DE26BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B52302A-8204-47CD-84C9-637D9DE26BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B52302A-8204-47CD-84C9-637D9DE26BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B52302A-8204-47CD-84C9-637D9DE26BFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,6 +138,7 @@ Global
 		{9F098841-3AD4-475A-9F7F-912752F2799A} = {F8B057E6-0AEA-459A-A8FB-D37E8897A7FC}
 		{6DF8BB03-6172-40CA-AC66-8A88F03B85F6} = {F8B057E6-0AEA-459A-A8FB-D37E8897A7FC}
 		{85B9A0BD-507A-40E2-BD15-0F71EBB72559} = {F8B057E6-0AEA-459A-A8FB-D37E8897A7FC}
+		{6B52302A-8204-47CD-84C9-637D9DE26BFF} = {DC561032-365B-4FBA-A4B6-97AECF541D9E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {997D2E17-104E-4CBA-ABC3-CD3F693BDB5F}

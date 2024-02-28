@@ -1,0 +1,16 @@
+﻿@using VistaBasket.Web.IServices
+@inject ICategoryService _categoryService
+
+<p>@errorMessage</p>
+<p>@successMessage</p>
+<EditForm Model="@CategoryDto" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <div class="form-group">
+        <label for="categoryname">Category name</label>
+        <input type="text" class="form-control" id="categoryname" @bind="CategoryDto.Name" />
+        <ValidationMessage For="@(() => CategoryDto.Name)" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="reset" class="btn btn-primary">Cancel</button>
+    <button type="button" class="btn btn-primary" @onclick="NavigateToBack">Back</button>
+</EditForm>

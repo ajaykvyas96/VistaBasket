@@ -8,7 +8,8 @@ namespace VistaBasket.Catalog.Service.Model.Brand
 {
     public class BrandDto
     {
-        public string? Name { get; set; }
+        public string? Id { get; set; }
+        public required string Name { get; set; }
         public string? Description { get; set; }
     }
 }

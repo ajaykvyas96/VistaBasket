@@ -1,0 +1,21 @@
+﻿@using VistaBasket.Web.IServices
+@inject IBrandService _brandService
+
+<p>@errorMessage</p>
+<p>@successMessage</p>
+<EditForm Model="@BrandDto" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <div class="form-group">
+        <label for="brandname">Brand name</label>
+        <input type="text" class="form-control" id="brandname" @bind="BrandDto.Name" />
+        <ValidationMessage For="@(() => BrandDto.Name)" />
+    </div>
+    <div class="form-group">
+        <label for="desc">Description</label>
+        <input type="text" class="form-control" id="desc" @bind="BrandDto.Description" />
+        <ValidationMessage For="@(() => BrandDto.Description)" />
+    </div>    
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="reset" class="btn btn-primary">Cancel</button>
+    <button type="button" class="btn btn-primary" @onclick="NavigateToBack">Back</button>
+</EditForm>

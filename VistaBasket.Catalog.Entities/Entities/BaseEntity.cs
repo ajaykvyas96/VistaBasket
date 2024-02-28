@@ -20,10 +20,10 @@ namespace VistaBasket.Catalog.Entities.Entities
         [Column("createdon"), DataType(DataType.Date), Required]
         public DateTime CreatedOn { get; set; }
 
-        [Column("updatedby"), StringLength(100)]
+        [Column("updatedby"), StringLength(450)]
         public string? UpdatedBy { get; set; }
 
-        [Column("createdby"), Required, StringLength(100)]
+        [Column("createdby"), Required, StringLength(450)]
         public string? CreatedBy { get; set; }
 
         [Column("updatedon"), DataType(DataType.Date)]

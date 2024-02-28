@@ -29,7 +29,7 @@ namespace VistaBasket.Auth.Service.Service
             {
                 new Claim(JwtRegisteredClaimNames.Email,applicationUser.Email),
                 new Claim(JwtRegisteredClaimNames.Sub,applicationUser.Id),
-                new Claim(JwtRegisteredClaimNames.Name,applicationUser.UserName)
+                new Claim(JwtRegisteredClaimNames.Name,applicationUser.FirstName + " " + applicationUser.LastName)
             };
             var tokenDescriptor = new SecurityTokenDescriptor
             {

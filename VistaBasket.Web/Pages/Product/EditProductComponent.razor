@@ -1,0 +1,10 @@
+﻿@page "/editproduct/{id}"
+
+@using Microsoft.AspNetCore.Authorization
+@using VistaBasket.Web.IServices
+@inject IProductService _productService
+@attribute [Authorize]
+
+<h3>Edit Category</h3>
+
+<ProductFormComponent ProductDto="@productDto"></ProductFormComponent>

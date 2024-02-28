@@ -9,6 +9,7 @@ namespace VistaBasket.Catalog.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BrandController : ControllerBase
     {
         private readonly IBrandService _brandService;
@@ -23,20 +24,27 @@ namespace VistaBasket.Catalog.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _brandService.GetAll();
-            _response.Result = result;
-            _response.IsSuccess = true;
-            return Ok(_response);
+            return Ok(await _brandService.GetAll());
+        }
+
+        [Authorize]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(string id)
+        {
+            return Ok(await _brandService.Get(id));
         }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] BrandDto brand)
         {
-            var result = await _brandService.Create(brand);
-            _response.Result = result;
-            _response.IsSuccess = true;
-            _response.Message = "Brand created successfully.";
-            return Ok(_response);
+            return Ok(await _brandService.Create(brand));
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(string id, [FromBody] BrandDto brand)
+        {
+            return Ok(await _brandService.Update(id, brand));
+            
         }
     }
 }

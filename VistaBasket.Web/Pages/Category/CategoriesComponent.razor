@@ -1,0 +1,28 @@
+﻿@page "/categories"
+@using Microsoft.AspNetCore.Authorization
+@using VistaBasket.Web.IServices
+@inject ICategoryService _categoryService
+@attribute [Authorize]
+
+<h3>Brands</h3>
+<button @onclick="NavigateToAdd">New Brand</button>
+@if (categories == null)
+{
+    <div class="spinner-border"></div>
+}
+else
+{
+    <table>
+        <tbody>
+            @foreach (var category in categories)
+            {
+                <tr>
+                    <td>@category.Name</td>
+                    <td>
+                        <button @onclick="() => NavigateToEdit(category.Id)">Edit</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

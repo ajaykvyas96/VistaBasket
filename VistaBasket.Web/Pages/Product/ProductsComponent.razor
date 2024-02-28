@@ -1,0 +1,27 @@
+﻿@page "/products"
+@using VistaBasket.Web.IServices
+@inject IProductService _productService
+
+<h3>Products</h3>
+
+<button @onclick="NavigateToAdd">New Product</button>
+@if (products == null)
+{
+    <div class="spinner-border"></div>
+}
+else
+{
+    <table>
+        <tbody>
+            @foreach (var product in products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>
+                        <button @onclick="() => NavigateToEdit(product.Id)">Edit</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

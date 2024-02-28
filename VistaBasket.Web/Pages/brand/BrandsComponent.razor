@@ -1,0 +1,29 @@
+﻿@page "/brands"
+@using Microsoft.AspNetCore.Authorization
+@using VistaBasket.Web.IServices
+@inject IBrandService _brandService
+@attribute [Authorize]
+
+<h3>Brands</h3>
+<button @onclick="NavigateToAdd">New Brand</button>
+@if (brands == null)
+{
+    <div class="spinner-border"></div>
+}
+else
+{
+    <table>
+        <tbody>
+            @foreach (var brand in brands)
+            {
+                <tr>
+                    <td>@brand.Name</td>
+                    <td>@brand.Description</td>
+                    <td>
+                        <button @onclick="() => NavigateToEdit(brand.Id)">Edit</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

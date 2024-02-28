@@ -1,0 +1,10 @@
+﻿@page "/editbrand/{id}"
+
+@using Microsoft.AspNetCore.Authorization
+@using VistaBasket.Web.IServices
+@inject IBrandService _brandService
+@attribute [Authorize]
+
+<h3>Edit Brand</h3>
+
+<BrandFormComponent BrandDto="@brandDto"></BrandFormComponent>

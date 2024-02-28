@@ -1,0 +1,10 @@
+﻿@page "/editcategory/{id}"
+
+@using Microsoft.AspNetCore.Authorization
+@using VistaBasket.Web.IServices
+@inject ICategoryService _categoryService
+@attribute [Authorize]
+
+<h3>Edit Category</h3>
+
+<CategoryFormComponent CategoryDto="@categoryDto"></CategoryFormComponent>
