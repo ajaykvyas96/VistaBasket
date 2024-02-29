@@ -31,7 +31,7 @@ namespace VistaBasket.Catalog.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] ProductDto brand)
+        public async Task<IActionResult> Post([FromForm] ProductDto brand)
         {
             return Ok(await _productService.Create(brand));
         }
@@ -40,7 +40,6 @@ namespace VistaBasket.Catalog.WebAPI.Controllers
         public async Task<IActionResult> Put(string id, [FromBody] ProductDto brand)
         {
             return Ok(await _productService.Update(id, brand));
-
         }
     }
 }
