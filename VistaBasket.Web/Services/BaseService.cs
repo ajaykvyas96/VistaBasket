@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
+using Newtonsoft.Json;
 using System.Net;
 using System.Text;
 using VistaBasket.Web.IServices;
@@ -49,7 +51,33 @@ namespace VistaBasket.Web.Services
                 }
                 if (requestDto.Data != null)
                 {
-                    request.Content = new StringContent(JsonConvert.SerializeObject(requestDto.Data), Encoding.UTF8, "application/json");
+                    if(requestDto.ContentType == ContentType.MultipartFormData)
+                    {
+                        var content = new MultipartFormDataContent();
+                        foreach (var prop in requestDto.Data.GetType().GetProperties())
+                        {
+                            var value = prop.GetValue(requestDto.Data);
+                            if (value is FormFile)
+                            {
+                                var file = (FormFile)value;
+                                if (file != null)
+                                {
+                                    content.Add(new StreamContent(file.OpenReadStream()), prop.Name, file.FileName);
+                                }
+                            }
+                            else
+                            {
+                                content.Add(new StringContent(value == null ? "" : value.ToString()), prop.Name);
+                            }
+                        }
+                        request.Content = content;
+                        request.Headers.Add("Accept", "*/*");
+                    }
+                    else
+                    {
+                        request.Content = new StringContent(JsonConvert.SerializeObject(requestDto.Data), Encoding.UTF8, "application/json");
+                    }
+                    
                 }
                 var response = await _httpClient.SendAsync(request);
 

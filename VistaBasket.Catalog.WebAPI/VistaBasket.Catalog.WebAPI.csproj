@@ -26,4 +26,8 @@
     <ProjectReference Include="..\VistaBasket.Catalog.Service\VistaBasket.Catalog.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

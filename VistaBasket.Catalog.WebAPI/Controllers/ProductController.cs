@@ -11,9 +11,9 @@ namespace VistaBasket.Catalog.WebAPI.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
-        public ProductController(IProductService brandService)
+        public ProductController(IProductService productService)
         {
-            _productService = brandService;
+            _productService = productService;
         }
 
         [Authorize]
@@ -37,7 +37,7 @@ namespace VistaBasket.Catalog.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(string id, [FromBody] ProductDto brand)
+        public async Task<IActionResult> Put(string id, [FromForm] ProductDto brand)
         {
             return Ok(await _productService.Update(id, brand));
         }

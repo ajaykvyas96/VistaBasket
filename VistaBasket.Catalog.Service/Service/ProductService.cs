@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VistaBasket.Catalog.Entities.Entities;
 using VistaBasket.Catalog.Repository.Interface;
+using VistaBasket.Catalog.Service.Extensions;
 using VistaBasket.Catalog.Service.Interface;
 using VistaBasket.Catalog.Service.Model;
 using VistaBasket.Catalog.Service.Model.Product;
@@ -26,6 +27,7 @@ namespace VistaBasket.Catalog.Service.Service
         public async Task<ResponseDto<ProductDto>> Create(ProductDto ProductDto)
         {
             var product = _mapper.Map<ProductDto, Product>(ProductDto);
+            product.ImageBlob = ProductDto.ProductImage.ReadFileContentAsByteArray();
             await _unitOfWork.Repository<Product>().AddAsync(product, "");
             await _unitOfWork.Complete(_userService.GetCurrentUserId());
 

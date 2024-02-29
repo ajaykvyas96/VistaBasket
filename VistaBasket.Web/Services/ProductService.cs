@@ -22,7 +22,8 @@ namespace VistaBasket.Web.Services
             {
                 ApiType = ApiType.POST,
                 Data = productDto,
-                Url = BaseUrls.CatalogAPIBase + "api/Product"
+                Url = BaseUrls.CatalogAPIBase + "api/Product",
+                ContentType = ContentType.MultipartFormData
             });
             return result;
         }

@@ -18,6 +18,11 @@
         <ValidationMessage For="@(() => ProductDto.Description)" />
     </div>
     <div class="form-group">
+        <label for="productImage">Product Image:</label>
+        <InputFile id="productImage" @bind-Value="ProductDto.ProductImage" class="form-control" />
+        <ValidationMessage For="@(() => ProductDto.ProductImage)" />
+    </div>
+    <div class="form-group">
         <label for="price">Product Price</label>
         <input type="text" class="form-control" id="price" @bind="ProductDto.Price" />
         <ValidationMessage For="@(() => ProductDto.Price)" />
@@ -27,9 +32,10 @@
         <label for="category">Category</label>
 
         <select @bind="ProductDto.CategoryId" class="form-control">
+            <option value="">Select</option>
             @foreach (var category in categories)
             {
-                <option value="@category.Id">@category.Name</option>
+                <option value="@category.Id" selected="@ProductDto.CategoryId">@category.Name</option>
             }
         </select>
         <ValidationMessage For="@(() => ProductDto.CategoryId)" />
@@ -38,9 +44,10 @@
         <label for="category">Brand</label>
 
         <select @bind="ProductDto.BrandId" class="form-control">
+            <option value="">Select</option>
             @foreach (var brand in brands)
             {
-                <option value="@brand.Id">@brand.Name</option>
+                <option value="@brand.Id" selected="@ProductDto.BrandId">@brand.Name</option>
             }
         </select>
         <ValidationMessage For="@(() => ProductDto.BrandId)" />

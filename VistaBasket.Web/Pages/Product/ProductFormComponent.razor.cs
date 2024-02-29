@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using VistaBasket.Web.Models.Catalog;
 
 namespace VistaBasket.Web.Pages.Product
@@ -19,6 +20,13 @@ namespace VistaBasket.Web.Pages.Product
             categories = await _categoryService.GetAll();
             brands = await _brandService.GetAll();
         }
+        //private void HandleFileChange(InputFileChangeEventArgs e)
+        //{
+        //    // Handle the file change event and update the product's ProductImage property
+        //    var file = e.File;
+        //    ProductDto.ProductImage = file;
+        //}
+
         private async Task HandleSubmit()
         {
             try
