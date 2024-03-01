@@ -12,7 +12,7 @@ namespace VistaBasket.Catalog.Service.Interface
     {
         Task<ResponseDto<ProductDto>> Create(ProductDto productDto);
         Task<ResponseDto<ProductDto>> Update(string id, ProductDto productDto);
-        Task<ResponseDto<List<ProductDto>>> GetAll();
+        Task<ResponseDto<List<ProductResponseDto>>> GetAll();
         Task<ResponseDto<ProductDto>> Get(string id);
     }
 }

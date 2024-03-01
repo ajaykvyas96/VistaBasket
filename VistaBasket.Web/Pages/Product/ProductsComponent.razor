@@ -1,4 +1,5 @@
 ﻿@page "/products"
+@using VistaBasket.Web.Extensions
 @using VistaBasket.Web.IServices
 @inject IProductService _productService
 
@@ -17,6 +18,9 @@ else
             {
                 <tr>
                     <td>@product.Name</td>
+                    <td>
+                        <img src="@product.ImageBlob.GetImageSource()" alt="Blog Image" />
+                    </td>
                     <td>
                         <button @onclick="() => NavigateToEdit(product.Id)">Edit</button>
                     </td>

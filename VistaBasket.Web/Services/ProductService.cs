@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using VistaBasket.Web.IServices;
 using VistaBasket.Web.Models;
 using VistaBasket.Web.Models.Catalog;
@@ -16,7 +17,7 @@ namespace VistaBasket.Web.Services
             _baseService = baseService;
 
         }
-        public async Task<ResponseDto> Create(ProductDto productDto)
+        public async Task<ResponseDto> Create([FromForm] ProductDto productDto)
         {
             var result = await _baseService.SendAsync(new RequestDto
             {
@@ -38,7 +39,7 @@ namespace VistaBasket.Web.Services
             return result;
         }
 
-        public async Task<List<ProductDto>> GetAll()
+        public async Task<List<ProductResponseDto>> GetAll()
         {
             var productResponse = await _baseService.SendAsync(new RequestDto
             {
@@ -47,10 +48,10 @@ namespace VistaBasket.Web.Services
             });
             if (productResponse.IsSuccess)
             {
-                var productResult = JsonConvert.DeserializeObject<List<ProductDto>>(productResponse?.Result.ToString());
+                var productResult = JsonConvert.DeserializeObject<List<ProductResponseDto>>(productResponse?.Result.ToString());
                 return productResult;
             }
-            return new List<ProductDto>();
+            return new List<ProductResponseDto>();
         }
 
         public async Task<ProductDto> Get(string id)

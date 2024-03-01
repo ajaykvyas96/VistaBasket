@@ -15,6 +15,7 @@ namespace VistaBasket.Catalog.WebAPI.Helpers
                 config.CreateMap<Brand, BrandDto>().ReverseMap();
                 config.CreateMap<Category, CategoryDto>().ReverseMap();
                 config.CreateMap<Product, ProductDto>().ReverseMap();
+                config.CreateMap<Product, ProductResponseDto>().ReverseMap();
             });
 
             return mappingConfig;

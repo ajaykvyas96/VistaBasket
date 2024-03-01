@@ -7,7 +7,7 @@ namespace VistaBasket.Web.IServices
     {
         Task<ResponseDto> Create(ProductDto productDto);
         Task<ResponseDto> Update(string id, ProductDto productDto);
-        Task<List<ProductDto>> GetAll();
+        Task<List<ProductResponseDto>> GetAll();
         Task<ProductDto> Get(string id);
     }
 }

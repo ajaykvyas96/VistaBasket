@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 using Newtonsoft.Json;
 using System.Net;
@@ -57,12 +58,12 @@ namespace VistaBasket.Web.Services
                         foreach (var prop in requestDto.Data.GetType().GetProperties())
                         {
                             var value = prop.GetValue(requestDto.Data);
-                            if (value is FormFile)
+                            if (value is IBrowserFile)
                             {
-                                var file = (FormFile)value;
+                                var file = (IBrowserFile)value;
                                 if (file != null)
                                 {
-                                    content.Add(new StreamContent(file.OpenReadStream()), prop.Name, file.FileName);
+                                    content.Add(new StreamContent(file.OpenReadStream()), prop.Name, file.Name);
                                 }
                             }
                             else

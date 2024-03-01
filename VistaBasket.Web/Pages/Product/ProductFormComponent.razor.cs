@@ -27,6 +27,11 @@ namespace VistaBasket.Web.Pages.Product
         //    ProductDto.ProductImage = file;
         //}
 
+        private async Task HandleFileUpload(InputFileChangeEventArgs e)
+        {
+            ProductDto.ProductImage = e.File;
+        }
+
         private async Task HandleSubmit()
         {
             try

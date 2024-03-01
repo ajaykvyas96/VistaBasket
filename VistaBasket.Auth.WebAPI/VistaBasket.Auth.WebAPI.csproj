@@ -22,6 +22,7 @@
     <ProjectReference Include="..\VistaBasket.Auth.Data\VistaBasket.Auth.Data.csproj" />
     <ProjectReference Include="..\VistaBasket.Auth.Repository\VistaBasket.Auth.Repository.csproj" />
     <ProjectReference Include="..\VistaBasket.Auth.Service\VistaBasket.Auth.Service.csproj" />
+    <ProjectReference Include="..\VistaBasket.MessageBus\VistaBasket.MessageBus.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="t54rrf" /></VisualStudio></ProjectExtensions>

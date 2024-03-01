@@ -1,0 +1,6 @@
+@VistaBasket.Email.WebAPI_HostAddress = http://localhost:5079
+
+GET {{VistaBasket.Email.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

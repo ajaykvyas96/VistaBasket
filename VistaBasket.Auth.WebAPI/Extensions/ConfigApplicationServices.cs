@@ -4,6 +4,7 @@ using VistaBasket.Auth.Repository.Service;
 using VistaBasket.Auth.Service.Interface;
 using VistaBasket.Auth.Service.Service;
 using VistaBasket.Auth.WebAPI.Middleware;
+using VistaBasket.MessageBus;
 
 namespace VistaBasket.Auth.WebAPI.Extensions
 {
@@ -13,6 +14,7 @@ namespace VistaBasket.Auth.WebAPI.Extensions
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IMessageBus,VistaBasket.MessageBus.MessageBus>();
             services.AddScoped<IJwtAuthManager, JwtAuthManager>();
             services.AddTransient<ExceptionHandlingMiddleware>();
 

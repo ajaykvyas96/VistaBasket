@@ -28,6 +28,7 @@ namespace VistaBasket.Catalog.Service.Service
         {
             var product = _mapper.Map<ProductDto, Product>(ProductDto);
             product.ImageBlob = ProductDto.ProductImage.ReadFileContentAsByteArray();
+            product.ImageName = ProductDto.ProductImage.Name;
             await _unitOfWork.Repository<Product>().AddAsync(product, "");
             await _unitOfWork.Complete(_userService.GetCurrentUserId());
 
@@ -38,11 +39,11 @@ namespace VistaBasket.Catalog.Service.Service
             };
         }
 
-        public async Task<ResponseDto<List<ProductDto>>> GetAll()
+        public async Task<ResponseDto<List<ProductResponseDto>>> GetAll()
         {
             var result = await _unitOfWork.Repository<Product>().ListAllAsync();
-            var products = _mapper.Map<IReadOnlyList<Product>, List<ProductDto>>(result);
-            return new ResponseDto<List<ProductDto>>()
+            var products = _mapper.Map<IReadOnlyList<Product>, List<ProductResponseDto>>(result);
+            return new ResponseDto<List<ProductResponseDto>>()
             {
                 Result = products
             };

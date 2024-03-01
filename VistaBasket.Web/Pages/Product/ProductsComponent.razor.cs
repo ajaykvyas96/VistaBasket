@@ -5,7 +5,7 @@ namespace VistaBasket.Web.Pages.Product
 {
     public partial class ProductsComponent
     {
-        private List<ProductDto> products = new List<ProductDto>();
+        private List<ProductResponseDto> products = new List<ProductResponseDto>();
         [Inject]
         NavigationManager NavigationManager { get; set; }
         protected override async Task OnInitializedAsync()

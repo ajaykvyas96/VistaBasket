@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using VistaBasket.Auth.Service.Interface;
 using VistaBasket.Auth.Service.Model;
+using VistaBasket.MessageBus;
 using Hosting = Microsoft.AspNetCore.Hosting;
 
 namespace VistaBasket.Auth.WebAPI.Controllers
@@ -13,11 +14,13 @@ namespace VistaBasket.Auth.WebAPI.Controllers
         private ResponseDto _response;
         private readonly Hosting.IHostingEnvironment _hostingEnvironment;
         private readonly IAuthService _authService;
-        public AuthController(Hosting.IHostingEnvironment hostingEnvironment, IAuthService authService)
+        private readonly IMessageBus _messageBus;
+        public AuthController(Hosting.IHostingEnvironment hostingEnvironment, IAuthService authService, IMessageBus messageBus)
         {
             _response = new ResponseDto();
             _hostingEnvironment = hostingEnvironment;
             _authService = authService;
+            _messageBus = messageBus;
         }
         [HttpPost("login")]
         public async Task<ActionResult<LoginResponseDto>> Login(LoginRequestDto loginModel)
@@ -30,6 +33,7 @@ namespace VistaBasket.Auth.WebAPI.Controllers
                 return BadRequest(_response);
             }
             _response.Result = loginResponse;
+            _messageBus.PublishMessageAsync("Hello");
             return Ok(_response);
         }
 

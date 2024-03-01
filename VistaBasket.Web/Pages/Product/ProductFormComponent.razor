@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
         <label for="productImage">Product Image:</label>
-        <InputFile id="productImage" @bind-Value="ProductDto.ProductImage" class="form-control" />
+        <InputFile id="productImage" @bind-Value="ProductDto.ProductImage" OnChange="HandleFileUpload" class="form-control" />
         <ValidationMessage For="@(() => ProductDto.ProductImage)" />
     </div>
     <div class="form-group">
