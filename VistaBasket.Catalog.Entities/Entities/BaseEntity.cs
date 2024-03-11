@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace VistaBasket.Catalog.Entities.Entities
 {
-    public class BaseEntity
+    public class BaseEntityR
     {
         [Key]
         [Column("id")]

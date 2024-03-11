@@ -19,8 +19,8 @@ namespace VistaBasket.Web.Extensions
             services.AddScoped<ApiAuthenticationStateProvider>();
             services.AddScoped<AuthenticationStateProvider>(sp => sp.GetRequiredService<ApiAuthenticationStateProvider>());
             //services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7060/") });
-            BaseUrls.AuthAPIBase = "https://localhost:7250/";
-            BaseUrls.CatalogAPIBase = "https://localhost:7275/";
+            BaseUrls.AuthAPIBase = "https://localhost:55372/";
+            BaseUrls.CatalogAPIBase = "https://localhost:55370/";
             BaseUrls.OrderAPIBase = "https://localhost:44365";
             return services;
         }

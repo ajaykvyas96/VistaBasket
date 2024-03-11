@@ -9,11 +9,16 @@ using VistaBasket.Auth.WebAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+var dbPassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
+var connectionString = $"Server={dbHost};Initial Catalog={dbName};User Id=sa;password={dbPassword};Integrated Security=False;TrustServerCertificate=True;";
 // Add services to the container.
 builder.Services.AddDbContext<AuthDbContext>(option =>
 {
-    option.UseSqlServer(builder.Configuration.GetConnectionString("VistaBasket.Auth"));
+    option.UseSqlServer(connectionString);
 });
+
 builder.Services.AppConfigSettingsServices(builder.Configuration);
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AuthDbContext>()
     .AddDefaultTokenProviders();
@@ -42,6 +47,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     //app.UseSwaggerDocumentation();
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        var context = services.GetRequiredService<AuthDbContext>();
+        if (context.Database.GetPendingMigrations().Any())
+        {
+            context.Database.Migrate();
+        }
+    }
 }
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
@@ -52,3 +67,4 @@ app.UseCors();
 app.MapControllers();
 
 app.Run();
+

@@ -4,21 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VistaBasket.Catalog.Data;
 using VistaBasket.Catalog.Entities.Entities;
-using VistaBasket.Catalog.Repository.Interface;
+//using VistaBasket.Catalog.Repository.Interface;
 using VistaBasket.Catalog.Service.Extensions;
 using VistaBasket.Catalog.Service.Interface;
 using VistaBasket.Catalog.Service.Model;
 using VistaBasket.Catalog.Service.Model.Product;
+using VistaBasket.Common.Repository;
 
 namespace VistaBasket.Catalog.Service.Service
 {
     public class ProductService : IProductService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork<CatalogDbContext> _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IUserService _userService;
-        public ProductService(IUnitOfWork unitOfWork, IMapper mapper, IUserService userService)
+        public ProductService(IUnitOfWork<CatalogDbContext> unitOfWork, IMapper mapper, IUserService userService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -30,7 +32,8 @@ namespace VistaBasket.Catalog.Service.Service
             product.ImageBlob = ProductDto.ProductImage.ReadFileContentAsByteArray();
             product.ImageName = ProductDto.ProductImage.Name;
             await _unitOfWork.Repository<Product>().AddAsync(product, "");
-            await _unitOfWork.Complete(_userService.GetCurrentUserId());
+            await _unitOfWork.Complete();
+            //await _unitOfWork.Complete(_userService.GetCurrentUserId());
 
             return new ResponseDto<ProductDto>()
             {
@@ -65,7 +68,8 @@ namespace VistaBasket.Catalog.Service.Service
             var product = _mapper.Map<ProductDto, Product>(productDto, existingProduct);
 
             await _unitOfWork.Repository<Product>().UpdateAsync(product, "");
-            await _unitOfWork.Complete(_userService.GetCurrentUserId());
+            await _unitOfWork.Complete();
+            //await _unitOfWork.Complete(_userService.GetCurrentUserId());
 
             return new ResponseDto<ProductDto>()
             {

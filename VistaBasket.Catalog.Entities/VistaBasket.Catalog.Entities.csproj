@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Common\VistaBasket.Common.Repository\VistaBasket.Common.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -24,7 +24,7 @@ namespace VistaBasket.Auth.WebAPI.Middleware
         /// 
         /// </summary>
         /// <param name="httpContext"></param>
-        /// <returns></returns>
+        /// <returns></returns> 
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             try

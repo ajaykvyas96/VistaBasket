@@ -5,6 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>false</InvariantGlobalization>
+    <UserSecretsId>81a380e2-ce24-4c34-aae0-090b046c268a</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +16,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
     <PackageReference Include="Npgsql" Version="8.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
@@ -20,9 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VistaBasket.Auth.Data\VistaBasket.Auth.Data.csproj" />
-    <ProjectReference Include="..\VistaBasket.Auth.Repository\VistaBasket.Auth.Repository.csproj" />
     <ProjectReference Include="..\VistaBasket.Auth.Service\VistaBasket.Auth.Service.csproj" />
-    <ProjectReference Include="..\VistaBasket.MessageBus\VistaBasket.MessageBus.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="t54rrf" /></VisualStudio></ProjectExtensions>

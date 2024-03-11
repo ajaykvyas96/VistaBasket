@@ -4,20 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VistaBasket.Catalog.Data;
 using VistaBasket.Catalog.Entities.Entities;
-using VistaBasket.Catalog.Repository.Interface;
+//using VistaBasket.Catalog.Repository.Interface;
 using VistaBasket.Catalog.Service.Interface;
 using VistaBasket.Catalog.Service.Model;
 using VistaBasket.Catalog.Service.Model.Category;
+using VistaBasket.Common.Repository;
 
 namespace VistaBasket.Catalog.Service.Service
 {
     public class CategoryService : ICategoryService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork<CatalogDbContext> _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IUserService _userService;
-        public CategoryService(IUnitOfWork unitOfWork, IMapper mapper, IUserService userService)
+        public CategoryService(IUnitOfWork<CatalogDbContext> unitOfWork, IMapper mapper, IUserService userService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -28,7 +30,8 @@ namespace VistaBasket.Catalog.Service.Service
         {
             var category = _mapper.Map<CategoryDto, Category>(categoryDto);
             await _unitOfWork.Repository<Category>().AddAsync(category, "");
-            await _unitOfWork.Complete(_userService.GetCurrentUserId());
+            //await _unitOfWork.Complete(_userService.GetCurrentUserId());
+            await _unitOfWork.Complete();
 
             return new ResponseDto<CategoryDto>()
             {
@@ -63,7 +66,8 @@ namespace VistaBasket.Catalog.Service.Service
             var category = _mapper.Map<CategoryDto, Category>(categoryDto, existingCategory);
 
             await _unitOfWork.Repository<Category>().UpdateAsync(category, "");
-            await _unitOfWork.Complete(_userService.GetCurrentUserId());
+            //await _unitOfWork.Complete(_userService.GetCurrentUserId());
+            await _unitOfWork.Complete();
 
             return new ResponseDto<CategoryDto>()
             {

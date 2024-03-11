@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
 using VistaBasket.Catalog.Entities.Entities;
+using VistaBasket.Common.Repository;
 
 namespace VistaBasket.Catalog.Data
 {

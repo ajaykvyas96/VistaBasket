@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\VistaBasket.Auth.Data\VistaBasket.Auth.Data.csproj" />
     <ProjectReference Include="..\VistaBasket.Auth.Entities\VistaBasket.Auth.Entities.csproj" />
   </ItemGroup>

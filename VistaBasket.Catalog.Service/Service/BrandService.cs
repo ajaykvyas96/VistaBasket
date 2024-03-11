@@ -6,20 +6,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VistaBasket.Catalog.Data;
 using VistaBasket.Catalog.Entities.Entities;
-using VistaBasket.Catalog.Repository.Interface;
+//using VistaBasket.Catalog.Repository.Interface;
 using VistaBasket.Catalog.Service.Interface;
 using VistaBasket.Catalog.Service.Model;
 using VistaBasket.Catalog.Service.Model.Brand;
+using VistaBasket.Common.Repository;
 
 namespace VistaBasket.Catalog.Service.Service
 {
     public class BrandService : IBrandService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork<CatalogDbContext> _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IUserService _userService;
-        public BrandService(IUnitOfWork unitOfWork, IMapper mapper, IUserService userService)
+        public BrandService(IUnitOfWork<CatalogDbContext> unitOfWork, IMapper mapper, IUserService userService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -31,7 +33,8 @@ namespace VistaBasket.Catalog.Service.Service
             var brand = _mapper.Map<BrandDto, Brand>(brandDto);
             //brand.CreatedBy = "Admin";
             await _unitOfWork.Repository<Brand>().AddAsync(brand, "");
-            await _unitOfWork.Complete(_userService.GetCurrentUserId());
+            await _unitOfWork.Complete();
+            //await _unitOfWork.Complete(_userService.GetCurrentUserId());
 
             return new ResponseDto<BrandDto>()
             {
@@ -66,7 +69,8 @@ namespace VistaBasket.Catalog.Service.Service
             var brand = _mapper.Map<BrandDto, Brand>(brandDto, existingBrand);
 
             await _unitOfWork.Repository<Brand>().UpdateAsync(brand, "");
-            await _unitOfWork.Complete(_userService.GetCurrentUserId());
+            //await _unitOfWork.Complete(_userService.GetCurrentUserId());
+            await _unitOfWork.Complete();
 
             return new ResponseDto<BrandDto>()
             {

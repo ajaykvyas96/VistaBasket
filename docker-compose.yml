@@ -1,0 +1,101 @@
+version: '3.4'
+
+networks:
+    backend: 
+
+services:
+  rabbitmq:
+    container_name: vistabasket-message-bus
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_HOST: rabbitmq
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+  vistabasket.auth.db:
+    container_name: vistabasket-auth-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment: 
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=ajay@123
+      - MSSQL_PID=Express
+    networks:
+      - backend
+    ports:
+      - 8001:1433   
+  vistabasket.auth.webapi:
+    container_name: auth-api
+    image: ${DOCKER_REGISTRY-}vistabasketauthwebapi
+    build:
+      context: .
+      dockerfile: VistaBasket.Auth.WebAPI/Dockerfile
+    depends_on:
+      - vistabasket.auth.db
+      - rabbitmq
+    networks:
+      - backend
+    ports:
+      - 8002:80
+    environment: 
+      - DB_HOST=vistabasket.auth.db
+      - DB_NAME=VistaBasket.Auth
+      - DB_SA_PASSWORD=ajay@123
+
+  vistabasket.catalog.db:
+    container_name: vistabasket-catalog-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment: 
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=ajay@123
+      - MSSQL_PID=Express
+    networks:
+      - backend
+    ports:
+      - 8003:1433
+  vistabasket.catalog.webapi:
+    container_name: catalog-api
+    image: ${DOCKER_REGISTRY-}vistabasketcatalogwebapi
+    build:
+      context: .
+      dockerfile: VistaBasket.Catalog.WebAPI/Dockerfile
+    depends_on:
+      - vistabasket.catalog.db
+    networks:
+      - backend
+    ports:
+      - 8004:80
+    environment: 
+      - DB_HOST=vistabasket.catalog.db
+      - DB_NAME=VistaBasket.Catalog
+      - DB_SA_PASSWORD=ajay@123
+
+  vistabasket.inventory.db:
+    container_name: vistabasket-inventory-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment: 
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=ajay@123
+      - MSSQL_PID=Express
+    networks:
+      - backend
+    ports:
+      - 8005:1433
+  vistabasket.inventory.webapi:
+    container_name: inventory-api
+    image: ${DOCKER_REGISTRY-}vistabasketinventorywebapi
+    build:
+      context: .
+      dockerfile: InventoryAPI/Vistabasket.Inventory.WebAPI/Dockerfile
+    depends_on:
+      - vistabasket.inventory.db
+    networks:
+      - backend
+    ports:
+      - 8006:80
+    environment: 
+      - DB_HOST=vistabasket.inventory.db
+      - DB_NAME=VistaBasket.Inventory
+      - DB_SA_PASSWORD=ajay@123
+
